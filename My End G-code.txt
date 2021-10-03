@@ -1,0 +1,16 @@
+G91 ; Relative mode
+G1 E-2 F2700 ;Retract a bit
+G1 E-2 Z0.2 F2400 ;Retract and raise Z
+G1 X5 Y5 F3000 ;Wipe out
+G1 Z10 ;Raise Z more
+G90 ; Absolute mode
+G1 X0 Y{machine_depth} ;Present print (added by Neige)
+M140 S0 ; turn the bed off
+M84 ; Disable steppers
+M117 Cooling down ; Cooling down message
+M106 S255 ; Activate the cooling fan and set it to 255
+M109 R50.000000 ; Wait for the hot end tempreature to get down to 50 degrees
+M104 S0 ; Set extruder temperature to 0
+M106 S0 ; Stop the fan
+G0 X100 ; Move the hot end 100mm on the right
+G0 Y230 ; Move the bed 230mm toward the top over the ultrasonic sensor
